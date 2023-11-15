@@ -1,4 +1,4 @@
-import Word from "./Word";
+import Word from "../Game/Word";
 
 export const renderPiece = (
   x: number,

@@ -2,18 +2,50 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Square from "../components/Game/Square";
 import Result from "../components/Game/Result";
+import {
+  line_first_char,
+  line_first_station,
+  makeGameArray,
+} from "../data/preprocessing";
+import { useRecoilState } from "recoil";
+import { correctState, piecePositionState, scoreState } from "../recoil/atoms";
+import { isCorrect } from "../components/Logic/handleScore";
 
 export default function Game() {
+  const [correct, setCorrect] = useRecoilState(correctState);
+  const [positionArray, setPositionArray] = useRecoilState(piecePositionState);
+  const [score, setScore] = useRecoilState(scoreState);
   const squares = [];
   for (let i = 0; i < 9; i++) {
     const x = i % 3;
     const y = Math.floor(i / 3);
-    squares.push(<Square x={x} y={y} />);
+    squares.push(<Square key={i} x={x} y={y} />);
   }
+  const onClick = () => {
+    if (isCorrect(positionArray, correct, line_first_station)) {
+      const charArray = line_first_char(line_first_station);
+      const correctArr = makeGameArray(line_first_station, charArray);
+      setCorrect(correctArr);
+      setScore(score + 10);
+      console.log(correctArr);
+      setPositionArray([
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [0, 1],
+        [1, 1],
+        [2, 1],
+        [0, 2],
+        [1, 2],
+        [2, 2],
+      ]);
+    }
+  };
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="flex flex-col justify-center items-center w-full h-screen gap-20">
+      <div className="flex flex-col justify-center items-center w-full h-screen gap-10">
+        <div style={{ width: "80vw", height: "10vw" }}></div>
         <div>
           <div
             className="border-2 flex flex-wrap"
@@ -31,6 +63,20 @@ export default function Game() {
           {<Result x={1} />}
           {<Result x={2} />}
           {<Result x={3} />}
+          {<Result x={4} />}
+          {<Result x={5} />}
+          {<Result x={6} />}
+          {<Result x={7} />}
+          {<Result x={8} />}
+        </div>
+        <div
+          className="border-2 flex justify-around items-center text-2xl"
+          style={{ width: "80vw", height: "15vw" }}
+        >
+          <div>{score}</div>
+          <div>
+            <button onClick={onClick}>Submit</button>
+          </div>
         </div>
       </div>
     </DndProvider>

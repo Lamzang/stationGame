@@ -14,3 +14,13 @@ export const piecePositionState = atom({
     [2, 2],
   ],
 });
+
+export const scoreState = atom({
+  key: "scoreState",
+  default: 0,
+});
+
+export const correctState = atom({
+  key: "correctState",
+  default: ["역", "삼", "역", "삼", "역", "삼", "역", "삼", "역"],
+});
