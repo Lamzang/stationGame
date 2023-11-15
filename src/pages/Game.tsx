@@ -80,7 +80,7 @@ export default function Game() {
         >
           <div>{score}</div>
           <div>
-            <button onClick={onClick}>Submit</button>
+            <button onClick={onClick}>제출</button>
           </div>
         </div>
         <div style={{ width: "80%", height: "1%" }}></div>
