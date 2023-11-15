@@ -3,7 +3,10 @@ import { colors } from "../theme/color";
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center w-full h-screen">
+    <div
+      className="flex justify-center items-center w-full h-screen"
+      style={{ backgroundColor: "gray" }}
+    >
       <div className="flex flex-col gap-10">
         <Link to={"/game"}>
           <div

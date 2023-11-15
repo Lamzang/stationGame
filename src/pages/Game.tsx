@@ -27,7 +27,6 @@ export default function Game() {
       const correctArr = makeGameArray(line_first_station, charArray);
       setCorrect(correctArr);
       setScore(score + 10);
-      console.log(correctArr);
       setPositionArray([
         [0, 0],
         [1, 0],
@@ -44,20 +43,23 @@ export default function Game() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="flex flex-col justify-center items-center w-full h-screen gap-10">
-        <div style={{ width: "80vw", height: "10vw" }}></div>
-        <div>
+      <div className="flex flex-col justify-center items-center w-full h-screen gap-10 bg-gray-200">
+        <div style={{ width: "80%", height: "20%" }}></div>
+        <div style={{ backgroundColor: "white", width: "60%", height: "60%" }}>
           <div
             className="border-2 flex flex-wrap"
-            style={{ width: "60vw", height: "60vw" }}
+            style={{ width: "100%", height: "100%" }}
           >
             {squares}
           </div>
         </div>
 
         <div
-          className="border-2 flex flex-row"
-          style={{ width: "80vw", height: "20vw" }}
+          className="border-2 flex flex-row bg-gray-300"
+          style={{
+            width: "80%",
+            height: "20%",
+          }}
         >
           {<Result x={0} />}
           {<Result x={1} />}
@@ -70,14 +72,18 @@ export default function Game() {
           {<Result x={8} />}
         </div>
         <div
-          className="border-2 flex justify-around items-center text-2xl"
-          style={{ width: "80vw", height: "15vw" }}
+          className="border-2 flex justify-around items-center text-2xl bg-gray-400 font-bold"
+          style={{
+            width: "80%",
+            height: "15%",
+          }}
         >
           <div>{score}</div>
           <div>
             <button onClick={onClick}>Submit</button>
           </div>
         </div>
+        <div style={{ width: "80%", height: "1%" }}></div>
       </div>
     </DndProvider>
   );

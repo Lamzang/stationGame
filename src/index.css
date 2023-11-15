@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Lobster&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
   max-width: 500px;
-  font-family: "Black Han Sans", "Lobster", sans-serif;
+  font-family: "Black Han Sans", "Do Hyeon", "Lobster" sans-serif;
+  margin: auto;
 }

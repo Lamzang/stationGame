@@ -10,7 +10,6 @@ export const isCorrect = (
   correctArray: string[],
   stationArray: string[]
 ) => {
-  console.log(positionArray);
   let resultArray = ["", "", "", "", "", "", "", "", ""];
   for (let i = 0; i < 9; i++) {
     if (positionArray[i][1] === -1) {
@@ -19,7 +18,6 @@ export const isCorrect = (
   }
   resultArray = resultArray.filter((char) => char !== "");
   const resultString = resultArray.join("");
-  console.log(resultString);
   if (stationArray.includes(resultString)) {
     return true;
   }
